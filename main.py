@@ -8,6 +8,7 @@ import time
 from PyQt5 import QtCore, QtGui, uic
 from PyQt5.QtWidgets import *
 import pandas as pd
+from PyQt5.QtGui import QPixmap
 
 
 UI_DIR = f"C:/sample_python/InEstimate/UI/"
@@ -57,7 +58,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.selected_light['제품명'] = light_names[0]
 
         self.set_lights_price_range(self.selected_light['제품명'])
-
+        self.ChangeLightImage()
 
         # --------------------
         # 평수
@@ -677,6 +678,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.set_lights_price_range(self.selected_light['제품명'])
         self.horizontalSlider_light.setValue(int(value))
 
+        self.ChangeLightImage()
+
     def ChangeLightSlider(self):
         unit = self.horizontalSlider_light.value() / 10
         self.selected_light['단가'] = unit
@@ -690,7 +693,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.doubleSpinBox_light_cost.setValue(unit*quantity)
         self.comboBox_light_names.setCurrentText(self.selected_light['제품명'])
 
-
     def ChangeLightQuantity(self):
         unit = self.horizontalSlider_light.value() / 10
         quantity = self.doubleSpinBox_light_quantity.value()
@@ -701,6 +703,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # 선택 변수 저장
         self.selected_light['갯수'] = quantity
         self.selected_light['비용'] = cost
+
+    def ChangeLightImage(self):
+        path = f"C:/sample_python/InEstimate/Img/Lights/{self.selected_light['타입']}_{self.selected_light['제품명']}.jpg"
+
+        # 그래프 이미지 보기
+        pixmap = QPixmap()
+        pixmap.load(path)
+        pixmap = pixmap.scaledToWidth(245)
+        self.pix_img.setPixmap(pixmap)
 
 
     # ==========================
@@ -765,6 +776,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Table Widget
         self.TableWidgetDf(self.tableWidget_lights, self.df_lights)
+
+    def btnLightMinus(self):
+        pass
+
+    def btnLightRefresh(self):
+        pass
 
 
     # =================================
