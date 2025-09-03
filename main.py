@@ -42,6 +42,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         gubuns = ['아파트', '빌라', '상가']
         self.comboBox_gubun.addItems(gubuns)
 
+        # 평수
+        self.ChangeArea()
+        self.CheckWallPaperCeil()
+
         # 조명
         light_gubun = list(dict.fromkeys(self.dict_materials['조명']['구분'].values.tolist()))
         self.comboBox_light_zone.addItems(light_gubun)
@@ -140,6 +144,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.horizontalSlider_wallpaper_lamination.valueChanged.connect(self.ChangeWallPaperSliderLamination)
         self.doubleSpinBox_wallpaper_cost_lamination.valueChanged.connect(self.ChangeWallPaperCostLamination)
 
+        # 확장
+        self.checkBox_wallpaper_extension.stateChanged.connect(self.CheckWallPaperExtension)
+
+        # 천장시공
+        self.checkBox_wallpaper_ceil.stateChanged.connect(self.CheckWallPaperCeil)
+
 
         # --------------------
         # 조명
@@ -173,6 +183,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                                '단가': None,
                                '갯수': None,
                                '비용': None}
+        self.selected_light_table = {'구분': None,
+                                     '제품명': None}
 
         self.items_demol = {'욕실': [False, 0],
                             '싱크대': [False, 0],
@@ -185,8 +197,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                             '조명': [False, 0]}
 
         self.items_wallPaper = {'실크': [False, 0],
-                                '합지': [False, 0]}
-
+                                '합지': [False, 0],
+                                '확장': [False, 0.2],
+                                '천장': [True, 2.5]}
 
 
     # ==========================
@@ -216,6 +229,20 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.ChangeLightSlider()
 
 
+    # ==================
+    # TableWidget
+    # ==================
+    def selected_table(self, row, col):
+        try:
+            self.selected_light_table['구분'] = self.tableWidget_lights.item(row, 0).text()
+            self.selected_light_table['제품명'] = self.tableWidget_lights.item(row, 2).text()
+
+            self.statusBar().showMessage(f"{self.selected_light_table['구분']} {self.selected_light_table['제품명']}")
+
+        except Exception as e:
+            print(e)
+
+
     # ==========================
     # Connect
     # ==========================
@@ -232,6 +259,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             bath_area = 1
 
         self.doubleSpinBox_demol_area_bath.setValue(bath_area)
+        self.doubleSpinBox_wallpaper_area_silk.setValue(area)
+        self.doubleSpinBox_wallpaper_area_lamination.setValue(area)
 
 
     # -------------------
@@ -550,14 +579,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def ChangeWallPaperAreaSilk(self):
         unit = self.horizontalSlider_wallpaper_silk.value() / 10
         area = self.doubleSpinBox_wallpaper_area_silk.value()
-        cost = unit * area * 2.5
+        cost = self.cal_cost_wallpaper(unit, area)
 
         self.doubleSpinBox_wallpaper_cost_silk.setValue(cost)
 
     def ChangeWallPaperSliderSilk(self):
         unit = self.horizontalSlider_wallpaper_silk.value() / 10
         area = self.doubleSpinBox_wallpaper_area_silk.value()
-        cost = unit * area * 2.5
+        cost = self.cal_cost_wallpaper(unit, area)
 
         self.label_wallpaper_silk.setText(str(f"{unit} 만"))
         self.doubleSpinBox_wallpaper_cost_silk.setValue(cost)
@@ -579,14 +608,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def ChangeWallPaperAreaLamination(self):
         unit = self.horizontalSlider_wallpaper_lamination.value() / 10
         area = self.doubleSpinBox_wallpaper_area_lamination.value()
-        cost = unit * area * 2.5
+        cost = self.cal_cost_wallpaper(unit, area)
 
         self.doubleSpinBox_wallpaper_cost_lamination.setValue(cost)
 
     def ChangeWallPaperSliderLamination(self):
         unit = self.horizontalSlider_wallpaper_lamination.value() / 10
         area = self.doubleSpinBox_wallpaper_area_lamination.value()
-        cost = unit * area * 2.5
+        cost = self.cal_cost_wallpaper(unit, area)
 
         self.label_wallpaper_lamination.setText(str(f"{unit} 만"))
         self.doubleSpinBox_wallpaper_cost_lamination.setValue(cost)
@@ -596,6 +625,25 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if self.items_wallPaper['합지'][0] == True:
             self.items_wallPaper['합지'][1] = cost
             self.cal_cost()
+
+
+    # -------------------
+    # 도배_합지
+    # -------------------
+    def CheckWallPaperExtension(self):
+        check = self.checkBox_wallpaper_extension.isChecked()
+        self.items_wallPaper['확장'][0] = check
+
+        self.ChangeWallPaperSliderLamination()
+        self.ChangeWallPaperSliderSilk()
+
+
+    def CheckWallPaperCeil(self):
+        check = self.checkBox_wallpaper_ceil.isChecked()
+        self.items_wallPaper['천장'][0] = check
+
+        self.ChangeWallPaperSliderLamination()
+        self.ChangeWallPaperSliderSilk()
 
 
     # -------------------
@@ -728,8 +776,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # 도배
         for key, val in self.items_wallPaper.items():
-            if val[0] == True:
-                self.cost_total += val[1]
+            if key in ['실크', '합지']:
+                if val[0] == True:
+                    self.cost_total += val[1]
+
+        # 조명
+        if (self.df_lights is not None) and (not self.df_lights.empty):
+            cost_lights = self.df_lights['비용'].sum()
+            self.cost_total += cost_lights
 
         # VAT
         self.cost_vat = self.cost_total * 0.1
@@ -738,6 +792,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # VIEW
         self.doubleSpinBox_totalCost.setValue(float(self.cost_total))
         self.doubleSpinBox_vat.setValue(float(self.cost_vat))
+
+    # 도배비용
+    def cal_cost_wallpaper(self, unit, area):
+        ext = 0
+        if self.items_wallPaper['확장'][0] == True:
+            ext = self.items_wallPaper['확장'][1]
+
+        if self.items_wallPaper['천장'][0] == True:
+            cost = (unit * area * 2.5) + (area * ext)
+        else:
+            cost = (unit * area * 1.5) + (area * ext)
+
+        return cost
 
 
     # ==========================
@@ -777,11 +844,35 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Table Widget
         self.TableWidgetDf(self.tableWidget_lights, self.df_lights)
 
+        # 총금액
+        self.cal_cost()
+
     def btnLightMinus(self):
-        pass
+        if self.df_lights is not None:
+            self.df_lights = self.df_lights[~((self.df_lights['구분']==self.selected_light_table['구분']) &
+                                            (self.df_lights['제품명']==self.selected_light_table['제품명']))]
+
+            # 총비용
+            total_cost = self.df_lights['비용'].sum()
+            self.doubleSpinBox_light_cost_total.setValue(total_cost)
+
+            # Table Widget
+            self.TableWidgetDf(self.tableWidget_lights, self.df_lights)
+
+            # 총금액
+            self.cal_cost()
 
     def btnLightRefresh(self):
-        pass
+        self.df_lights = pd.DataFrame()
+
+        # Table Widget
+        self.TableWidgetDf(self.tableWidget_lights, self.df_lights)
+
+        # 총비용
+        self.doubleSpinBox_light_cost_total.setValue(0)
+
+        # 총금액
+        self.cal_cost()
 
 
     # =================================

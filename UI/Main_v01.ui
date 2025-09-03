@@ -50,6 +50,12 @@
       </property>
       <item>
        <widget class="QFrame" name="frame_120">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="font">
          <font>
           <family>나눔고딕 ExtraBold</family>
@@ -116,7 +122,7 @@ font: 75 9pt &quot;나눔고딕 ExtraBold&quot;;</string>
               </property>
               <property name="maximumSize">
                <size>
-                <width>16777215</width>
+                <width>70</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -146,110 +152,40 @@ font: 14pt &quot;구름 산스 500&quot;;</string>
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="label_44">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
+             <widget class="QLineEdit" name="lineEdit">
               <property name="minimumSize">
                <size>
-                <width>70</width>
+                <width>120</width>
                 <height>30</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>16777215</width>
+                <width>200</width>
                 <height>16777215</height>
                </size>
               </property>
-              <property name="font">
-               <font>
-                <family>구름 산스 500</family>
-                <pointsize>14</pointsize>
-                <weight>50</weight>
-                <italic>false</italic>
-                <bold>false</bold>
-               </font>
-              </property>
               <property name="styleSheet">
-               <string notr="true">background-color: rgb(213, 77, 23);
-color: rgb(255, 255, 255);
+               <string notr="true">background-color: rgb(255, 255, 255);
 font: 14pt &quot;구름 산스 500&quot;;</string>
-              </property>
-              <property name="frameShape">
-               <enum>QFrame::Box</enum>
-              </property>
-              <property name="text">
-               <string>평수</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="label_45">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
+             <spacer name="horizontalSpacer_62">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
               </property>
-              <property name="minimumSize">
+              <property name="sizeHint" stdset="0">
                <size>
-                <width>70</width>
-                <height>30</height>
+                <width>40</width>
+                <height>20</height>
                </size>
               </property>
-              <property name="maximumSize">
-               <size>
-                <width>16777215</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <family>구름 산스 500</family>
-                <pointsize>14</pointsize>
-                <weight>50</weight>
-                <italic>false</italic>
-                <bold>false</bold>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">background-color: rgb(213, 77, 23);
-color: rgb(255, 255, 255);
-font: 14pt &quot;구름 산스 500&quot;;</string>
-              </property>
-              <property name="frameShape">
-               <enum>QFrame::Box</enum>
-              </property>
-              <property name="text">
-               <string>Level</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
+             </spacer>
             </item>
            </layout>
           </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_63">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
          </item>
         </layout>
        </widget>
@@ -478,6 +414,19 @@ font: 14pt &quot;구름 산스 500&quot;;</string>
              </widget>
             </item>
             <item>
+             <spacer name="horizontalSpacer_60">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
              <widget class="QLabel" name="label_25">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -555,19 +504,6 @@ font: 14pt &quot;구름 산스 500&quot;;</string>
             </item>
            </layout>
           </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_60">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
          </item>
         </layout>
        </widget>
@@ -798,21 +734,21 @@ font: 14pt &quot;구름 산스 500&quot;;</string>
               </property>
              </widget>
             </item>
+            <item>
+             <spacer name="horizontalSpacer_61">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
            </layout>
           </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_61">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
          </item>
         </layout>
        </widget>
@@ -3475,6 +3411,244 @@ font: 12pt &quot;구름 산스 500&quot;;</string>
                 <property name="bottomMargin">
                  <number>0</number>
                 </property>
+                <item>
+                 <widget class="QFrame" name="frame_123">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>나눔고딕 ExtraBold</family>
+                    <pointsize>9</pointsize>
+                    <weight>9</weight>
+                    <italic>false</italic>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgb(213, 77, 23);
+font: 75 9pt &quot;나눔고딕 ExtraBold&quot;;</string>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_268">
+                   <property name="leftMargin">
+                    <number>3</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>3</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>3</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>3</number>
+                   </property>
+                   <item>
+                    <widget class="QFrame" name="horizontalFrame_24">
+                     <property name="styleSheet">
+                      <string notr="true">color: rgb(255, 255, 255);</string>
+                     </property>
+                     <property name="frameShape">
+                      <enum>QFrame::Box</enum>
+                     </property>
+                     <layout class="QHBoxLayout" name="horizontalLayout_95">
+                      <property name="spacing">
+                       <number>3</number>
+                      </property>
+                      <property name="leftMargin">
+                       <number>3</number>
+                      </property>
+                      <property name="topMargin">
+                       <number>3</number>
+                      </property>
+                      <property name="rightMargin">
+                       <number>3</number>
+                      </property>
+                      <property name="bottomMargin">
+                       <number>3</number>
+                      </property>
+                      <item>
+                       <widget class="QCheckBox" name="checkBox_wallpaper_extension">
+                        <property name="enabled">
+                         <bool>true</bool>
+                        </property>
+                        <property name="minimumSize">
+                         <size>
+                          <width>20</width>
+                          <height>30</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>16777215</width>
+                          <height>16777215</height>
+                         </size>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">color: rgb(255, 255, 255);</string>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                        <property name="checked">
+                         <bool>false</bool>
+                        </property>
+                        <property name="tristate">
+                         <bool>false</bool>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="label_39">
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="minimumSize">
+                         <size>
+                          <width>80</width>
+                          <height>30</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>80</width>
+                          <height>16777215</height>
+                         </size>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <family>구름 산스 500</family>
+                          <pointsize>14</pointsize>
+                          <weight>50</weight>
+                          <italic>false</italic>
+                          <bold>false</bold>
+                         </font>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">background-color: rgb(213, 77, 23);
+color: rgb(255, 255, 255);
+font: 14pt &quot;구름 산스 500&quot;;</string>
+                        </property>
+                        <property name="frameShape">
+                         <enum>QFrame::Box</enum>
+                        </property>
+                        <property name="text">
+                         <string>확장</string>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QCheckBox" name="checkBox_wallpaper_ceil">
+                        <property name="enabled">
+                         <bool>true</bool>
+                        </property>
+                        <property name="minimumSize">
+                         <size>
+                          <width>20</width>
+                          <height>30</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>16777215</width>
+                          <height>16777215</height>
+                         </size>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">color: rgb(255, 255, 255);</string>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                        <property name="checked">
+                         <bool>true</bool>
+                        </property>
+                        <property name="tristate">
+                         <bool>false</bool>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="label_40">
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="minimumSize">
+                         <size>
+                          <width>80</width>
+                          <height>30</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>80</width>
+                          <height>16777215</height>
+                         </size>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <family>구름 산스 500</family>
+                          <pointsize>14</pointsize>
+                          <weight>50</weight>
+                          <italic>false</italic>
+                          <bold>false</bold>
+                         </font>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">background-color: rgb(213, 77, 23);
+color: rgb(255, 255, 255);
+font: 14pt &quot;구름 산스 500&quot;;</string>
+                        </property>
+                        <property name="frameShape">
+                         <enum>QFrame::Box</enum>
+                        </property>
+                        <property name="text">
+                         <string>천장 시공</string>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <spacer name="horizontalSpacer_32">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeType">
+                         <enum>QSizePolicy::Expanding</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>40</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
                 <item>
                  <widget class="QFrame" name="frame_111">
                   <property name="minimumSize">
@@ -6568,7 +6742,7 @@ font: 12pt &quot;구름 산스 500&quot;;</string>
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
-                        <height>16777215</height>
+                        <height>50</height>
                        </size>
                       </property>
                       <property name="font">
@@ -6725,7 +6899,7 @@ font: 12pt &quot;구름 산스 500&quot;;</string>
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
-                        <height>16777215</height>
+                        <height>50</height>
                        </size>
                       </property>
                       <property name="font">
@@ -6941,7 +7115,7 @@ font: 18pt &quot;여기어때 잘난체 고딕 TTF&quot;;</string>
                       <property name="minimumSize">
                        <size>
                         <width>200</width>
-                        <height>100</height>
+                        <height>250</height>
                        </size>
                       </property>
                       <property name="maximumSize">
@@ -7174,8 +7348,8 @@ color: rgb(213, 77, 23);</string>
    <slot>btnLightAdd()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>615</x>
-     <y>364</y>
+     <x>617</x>
+     <y>418</y>
     </hint>
     <hint type="destinationlabel">
      <x>754</x>
@@ -7190,8 +7364,8 @@ color: rgb(213, 77, 23);</string>
    <slot>btnLightMinus()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>672</x>
-     <y>340</y>
+     <x>695</x>
+     <y>418</y>
     </hint>
     <hint type="destinationlabel">
      <x>766</x>
@@ -7203,15 +7377,31 @@ color: rgb(213, 77, 23);</string>
    <sender>pushButton_light_refresh</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
-   <slot>bntLightRefresh()</slot>
+   <slot>btnLightRefresh()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>722</x>
-     <y>354</y>
+     <x>723</x>
+     <y>403</y>
     </hint>
     <hint type="destinationlabel">
-     <x>764</x>
-     <y>398</y>
+     <x>767</x>
+     <y>478</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tableWidget_lights</sender>
+   <signal>cellClicked(int,int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>selected_table()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>201</x>
+     <y>567</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-4</x>
+     <y>464</y>
     </hint>
    </hints>
   </connection>
@@ -7219,6 +7409,7 @@ color: rgb(213, 77, 23);</string>
  <slots>
   <slot>btnLightAdd()</slot>
   <slot>btnLightMinus()</slot>
-  <slot>bntLightRefresh()</slot>
+  <slot>btnLightRefresh()</slot>
+  <slot>selected_table()</slot>
  </slots>
 </ui>
